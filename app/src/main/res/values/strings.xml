@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CodePath_Project_5_BitFit</string>
+    <string name="log_in">Log In</string>
+    <string name="bitfit">BitFit</string>
+    <string name="how_are_you_feeling_today">How are you feeling today?</string>
+    <string name="happy">Happy</string>
+    <string name="sad">Sad</string>
+    <string name="content">Content</string>
+    <string name="fearful">Fearful</string>
+    <string name="angry">Angry</string>
+    <string name="lazy">Lazy</string>
+    <string name="motivated">Motivated</string>
+    <string name="save_entry">Save Entry</string>
+    <string name="my_entries">My Entries</string>
+    <string name="select_mood">Select Mood</string>
+</resources>
