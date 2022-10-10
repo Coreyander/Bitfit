@@ -1,8 +1,8 @@
-# Android Project 5 - *BitFite*
+# Android Project 5 - *BitFit*
 
-Submitted by: **Corey Smithe**
+Submitted by: **Corey Smith**
 
-**BitFItp** is a health metrics app that allows users to track mood, water, calories, food intake, and sleep 
+**BitFit** is a health metrics app that allows users to track mood, water, calories, food intake, and sleep 
 
 Time spent: **20** hours spent in total
 
