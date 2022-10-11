@@ -13,4 +13,6 @@
     <string name="save_entry">Save Entry</string>
     <string name="my_entries">My Entries</string>
     <string name="select_mood">Select Mood</string>
+    <string name="open_menu">Open Menu</string>
+    <string name="add_entry">Add Entry</string>
 </resources>

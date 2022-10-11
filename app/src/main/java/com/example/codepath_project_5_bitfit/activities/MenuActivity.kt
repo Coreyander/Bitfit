@@ -1,43 +1,45 @@
 package com.example.codepath_project_5_bitfit.activities
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codepath_project_5_bitfit.R
 import com.example.codepath_project_5_bitfit.adapters.MenuRecyclerViewAdapter
 import com.example.codepath_project_5_bitfit.fragments.*
 import com.example.codepath_project_5_bitfit.BitfitApplication
-import com.example.codepath_project_5_bitfit.adapters.MyEntriesRecyclerViewAdapter
-import com.example.codepath_project_5_bitfit.database.AppDatabase
+import com.example.codepath_project_5_bitfit.BitFitViewModel
+import com.example.codepath_project_5_bitfit.ViewModelFactory
 import com.example.codepath_project_5_bitfit.database.FitnessEntity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.sql.Date
 
 class MenuActivity: AppCompatActivity() {
+
     private lateinit var menuRecyclerView: RecyclerView
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
-        val save = findViewById<Button>(R.id.addBtn)
+        val save = findViewById<FloatingActionButton>(R.id.addBtn)
+        val openMenu = findViewById<ImageButton>(R.id.openMenuBtn)
 
         //ViewModel
-        val fragmentViewModel : FragmentViewModel by viewModels()
+        val viewModel : BitFitViewModel by viewModels {ViewModelFactory((application as BitfitApplication).repo)}
         var mood : String? = null
         var sleep : String? = null
         var food : String? = null
         var calories : String? = null
         var water : String? = null
-        fragmentViewModel.mood.observe(this) { mood = fragmentViewModel.mood.value }
-
+        viewModel.mood.observe(this) { mood = viewModel.mood.value }
+        viewModel.entries.observe(this) { menuRecyclerView.adapter?.notifyDataSetChanged() }
         menuRecyclerView = findViewById(R.id.recyclerView)
         val iconIds = listOf(0, 1, 2, 3, 4)
 
@@ -55,17 +57,13 @@ class MenuActivity: AppCompatActivity() {
         save.setOnClickListener{
             createEntry(mood, sleep, food, calories, water)
         }
-
-    val appData = AppDatabase.getInstance(this)
-    lifecycleScope.launch {
-        val entries = appData.fitnessDao().getAll()
-        fragmentViewModel.setData(entries)
-    }
-    fragmentViewModel.getData()
-    val supportFragmentManager = supportFragmentManager
-    val fragmentTransaction = supportFragmentManager.beginTransaction()
-    fragmentTransaction.replace(R.id.content, MyEntriesFragment(), null).commit()
-
+        //Open menu click listener
+        openMenu.setOnClickListener{
+            if(menuRecyclerView.visibility == View.GONE)
+                menuRecyclerView.visibility = View.VISIBLE
+            else if(menuRecyclerView.visibility == View.VISIBLE)
+                menuRecyclerView.visibility = View.GONE
+        }
     }
 
     fun executeClick(pos: Int) {
@@ -104,6 +102,8 @@ class MenuActivity: AppCompatActivity() {
         }
     }
 
+    //The app now uses LiveData!
+    //Create entry is calling to add an entry which triggers the observer which then notifies the adapter
     private fun createEntry(mood : String?, sleep: String?, food : String?, calories : String?, water : String?) {
         CoroutineScope(Dispatchers.IO).launch {
             (application as BitfitApplication).db.fitnessDao().insert(

@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import com.example.codepath_project_5_bitfit.R
+import com.example.codepath_project_5_bitfit.BitFitViewModel
 
 class MoodFragment() : Fragment() {
 
-    private val viewModel: FragmentViewModel by activityViewModels()
+    private val viewModel: BitFitViewModel by activityViewModels()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -29,31 +28,31 @@ class MoodFragment() : Fragment() {
             selection?.text = "Current Mood: " + viewModel.mood.value
         }
         happyBtn?.setOnClickListener{
-            viewModel.setMood("Happy")
+            viewModel.setMoodData("Happy")
         }
         val sadBtn = view.findViewById<Button>(R.id.sadBtn)
         sadBtn?.setOnClickListener{
-            viewModel.setMood("Sad")
+            viewModel.setMoodData("Sad")
         }
         val contentBtn = view.findViewById<Button>(R.id.contentBtn)
         contentBtn?.setOnClickListener{
-            viewModel.setMood("Content")
+            viewModel.setMoodData("Content")
         }
         val fearBtn = view.findViewById<Button>(R.id.fearBtn)
         fearBtn?.setOnClickListener{
-            viewModel.setMood("Fearful")
+            viewModel.setMoodData("Fearful")
         }
         val angerBtn = view.findViewById<Button>(R.id.angerBtn)
         angerBtn?.setOnClickListener{
-            viewModel.setMood("Angry")
+            viewModel.setMoodData("Angry")
         }
         val lazyBtn = view.findViewById<Button>(R.id.lazyBtn)
         lazyBtn?.setOnClickListener{
-            viewModel.setMood("Lazy")
+            viewModel.setMoodData("Lazy")
         }
         val motivatedBtn = view.findViewById<Button>(R.id.motivatedBtn)
         motivatedBtn?.setOnClickListener{
-            viewModel.setMood("Motivated")
+            viewModel.setMoodData("Motivated")
         }
         return view
     }

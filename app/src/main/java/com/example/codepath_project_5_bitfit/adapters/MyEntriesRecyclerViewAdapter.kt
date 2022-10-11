@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codepath_project_5_bitfit.R
 import com.example.codepath_project_5_bitfit.database.FitnessEntity
 
 class MyEntriesRecyclerViewAdapter(private val context: Context,
-                                   private val entries : List<FitnessEntity>,
+                                   private val entries: List<FitnessEntity>?,
                                    private val listener: ItemClickListener)
     : RecyclerView.Adapter<MyEntriesRecyclerViewAdapter.ViewHolder>(){
 
@@ -52,18 +53,17 @@ class MyEntriesRecyclerViewAdapter(private val context: Context,
     }
 
     override fun onBindViewHolder(holder: MyEntriesRecyclerViewAdapter.ViewHolder, position: Int) {
-
         holder.itemView.setOnLongClickListener{ true }
-        holder.dateTextView.text = entries[position].date
+        holder.dateTextView.text = entries?.get(position)?.date
         holder.dateTextView.setOnLongClickListener{ true }
-        holder.sleepStatTextView.text = entries[position].sleep
-        holder.nutritionStatTextView.text = entries[position].calories
-        holder.waterStatTextView.text = entries[position].water
-        holder.moodStatTextView.text = entries[position].mood
+        holder.sleepStatTextView.text = entries?.get(position)?.sleep
+        holder.nutritionStatTextView.text = entries?.get(position)?.calories
+        holder.waterStatTextView.text = entries?.get(position)?.water
+        holder.moodStatTextView.text = entries?.get(position)?.mood
 
     }
 
     override fun getItemCount(): Int {
-        return entries.size
+        return entries?.size ?: 0
     }
 }

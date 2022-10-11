@@ -1,5 +1,6 @@
 package com.example.codepath_project_5_bitfit.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -9,12 +10,11 @@ interface FitnessDAO {
     fun getUserID(): Flow<List<Long>>
 
     @Query("SELECT * FROM fitness_table")
-    suspend fun getAll(): List<FitnessEntity>
+    fun getAll(): LiveData<List<FitnessEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(entry : FitnessEntity)
 
-
     @Delete
-    suspend fun deleteThis(entry : FitnessEntity)
+    suspend fun deleteThis(entry : FitnessEntity?)
 }
