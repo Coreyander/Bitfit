@@ -15,4 +15,6 @@
     <string name="select_mood">Select Mood</string>
     <string name="open_menu">Open Menu</string>
     <string name="add_entry">Add Entry</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

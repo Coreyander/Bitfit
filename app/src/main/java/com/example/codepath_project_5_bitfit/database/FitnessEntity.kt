@@ -12,12 +12,12 @@ data class FitnessEntity(
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "date") val date: String?,
     @ColumnInfo(name = "mood") val mood: String?,
-    @ColumnInfo(name = "sleep") val sleep: String?,
+    @ColumnInfo(name = "sleep") val sleep: Float?,
     @ColumnInfo(name = "sleep_goal") val sleep_goal: String?,
-    @ColumnInfo(name = "water") val water: String?,
+    @ColumnInfo(name = "water") val water: Float?,
     @ColumnInfo(name = "water_goal") val waterGoal: String?,
     @ColumnInfo(name = "food_name") val food: String?,
-    @ColumnInfo(name = "food_calories") val calories: String?,
+    @ColumnInfo(name = "food_calories") val calories: Int?,
     @ColumnInfo(name = "food_goal") val foodGoal: String?
 )
 

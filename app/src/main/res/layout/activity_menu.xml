@@ -5,73 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:scrollbars="horizontal"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/coordinator"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="18dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_baseline_post_add_24"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        app:layout_constraintVertical_bias="0.908"
-        tools:visibility="visible" />
+        tools:visibility="visible"/>
 
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView">
+
+
     </FrameLayout>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinator"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:background="#D3E1EC"
+            app:menu="@menu/bottom_menu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView">
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/openMenuBtn"
-                android:layout_width="70dp"
-                android:layout_height="55dp"
-                android:layout_gravity="start"
-                android:background="@drawable/menu_icon"
-                app:layout_anchor="@+id/openMenuBtn" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="120dp"
-                android:layout_height="60dp"
-                android:backgroundTint="@color/white"
-                android:visibility="invisible"
-                android:layout_gravity="end" />
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/add_entry"
-            app:layout_anchor="@id/bottomAppBar">
-
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

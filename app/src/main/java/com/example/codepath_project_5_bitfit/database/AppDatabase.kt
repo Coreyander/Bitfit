@@ -12,7 +12,7 @@ abstract fun userDao(): UserDao
 }
  */
 
-@Database(entities = [FitnessEntity::class], version = 1)
+@Database(entities = [FitnessEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun fitnessDao() : FitnessDAO
@@ -31,6 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java, "Fitness-db"
-            ).build()
+            ).fallbackToDestructiveMigration()
+                .build()
     }
 }
