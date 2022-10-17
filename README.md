@@ -1,48 +1,45 @@
-# Android Project 5 - *BitFit*
+# Android Project 6 - *BitFit*
 
 Submitted by: **Corey Smith**
 
-**BitFit** is a health metrics app that allows users to track mood, water, calories, food intake, and sleep 
+**BitFit** is a health metrics app that allows users to track mood, water, calories, and sleep 
 
-Time spent: **20** hours spent in total
+Time spent: **30** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **At least one health metric is tracked (based on user input)**
-  - Chosen metric(s): `Mood`
-- [x] **There is a "create entry" UI that prompts users to make their daily entry**
-- [x] **New entries are saved in a database and then updated in the RecyclerView**
-- [x] **On application restart, previously entered entries are preserved (i.e., are *persistent*)**
- 
+- [x] **Use at least 2 Fragments**
+- [x] **Create a new dashboard fragment where users can see a summary of their entered data**
+- [x] **Use one of the Navigation UI Views (BottomNavigation, Drawer Layout, Top Bar) to move between the fragments**
+
 The following **optional** features are implemented:
 
-- [ ] **Create a UI for tracking averages and trends in metrics**
-- [x] **Improve and customize the user interface through styling and coloring**
-- [ ] **Implement orientation responsivity**
-- [ ] **Add a daily photo feature**
+- [ ] **Add a more advanced UI (e.g: Graphing) for tracking trends in metrics**
+- [ ] **Implement daily notifications to prompt users to fill in their data**
 
 The following **additional** features are implemented:
 
-- [x] Implemented fragments for future features such as water, calorie, and sleep tracking, and user log in
-- [x] Pop up to delete previous entries from database
+- [x] Created UI framework for future features (statistics, and log in)
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='bitfit.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='BitFitWalkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-
-GIF created with GIF Maker-Editor by Zatashimalab
+GIF created with GIF Maker-Editor
 
 
 ## Notes
 
-Creating responsive data. Future work on the project will include collapsing the RecyclerViews into smaller menus, and
-converting all data to LiveData types so that changes in the database are more apparent. I used this project mostly to
-reinforce practice of RecyclerViews and layouts but designed it with expansion in mind.
+Describe any challenges encountered while building the app.
+
+I designed myself into a corner from the first iteration of BitFit.
+Most of its menus didn't make sense once more features were being added.
+Refactoring the app has been a valuable lesson in using the development lifecycle.
+The planning phase is important!
 
 ## License
 
